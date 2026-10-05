@@ -1,0 +1,1790 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JECRC University Admission Form</title>
+
+<style>
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --primary: #1769e0;
+    --primary-dark: #0d47a1;
+    --navy: #102a43;
+    --bg: #f4f7fb;
+    --white: #ffffff;
+    --text: #172b4d;
+    --muted: #667085;
+    --border: #d9e2ec;
+    --danger: #d92d20;
+    --success: #087443;
+}
+
+body {
+    font-family: "Segoe UI", Arial, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.5;
+}
+
+/* HEADER */
+header {
+    background: linear-gradient(135deg, #0d47a1, #1769e0);
+    color: white;
+    padding: 25px 20px;
+    box-shadow: 0 4px 18px rgba(0,0,0,.15);
+}
+
+.header-inner {
+    max-width: 1100px;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    gap: 18px;
+}
+
+.logo {
+    width: 72px;
+    height: 72px;
+    border-radius: 18px;
+    background: rgba(255,255,255,.15);
+    border: 2px solid rgba(255,255,255,.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 35px;
+    flex-shrink: 0;
+}
+
+.header-text h1 {
+    font-size: 28px;
+}
+
+.header-text p {
+    font-size: 15px;
+    opacity: .9;
+}
+
+.session {
+    display: inline-block;
+    margin-top: 4px;
+    font-size: 13px;
+    opacity: .9;
+}
+
+/* MAIN */
+.container {
+    width: min(1100px, calc(100% - 30px));
+    margin: auto;
+    padding: 38px 0 60px;
+}
+
+.page-title {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.page-title h2 {
+    font-size: 32px;
+    color: var(--navy);
+}
+
+.page-title p {
+    color: var(--muted);
+    margin-top: 5px;
+}
+
+/* PROGRESS */
+.progress-card {
+    background: white;
+    padding: 18px 20px;
+    border-radius: 14px;
+    margin-bottom: 22px;
+    box-shadow: 0 3px 15px rgba(0,0,0,.05);
+}
+
+.progress-info {
+    display: flex;
+    justify-content: space-between;
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.progress-track {
+    width: 100%;
+    height: 8px;
+    background: #e7edf5;
+    border-radius: 50px;
+    overflow: hidden;
+}
+
+.progress-bar {
+    width: 0%;
+    height: 100%;
+    background: linear-gradient(90deg, #1769e0, #4f9cff);
+    border-radius: 50px;
+    transition: width .3s ease;
+}
+
+/* FORM CARD */
+.card {
+    background: white;
+    border-radius: 18px;
+    padding: 27px;
+    margin-bottom: 20px;
+    border: 1px solid #e7ecf2;
+    box-shadow: 0 4px 18px rgba(16,24,40,.05);
+}
+
+.section-heading {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+    padding-bottom: 18px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #edf1f6;
+}
+
+.icon {
+    width: 43px;
+    height: 43px;
+    background: #edf4ff;
+    border-radius: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 21px;
+}
+
+.section-heading h3 {
+    color: var(--navy);
+    font-size: 19px;
+}
+
+.section-heading p {
+    color: var(--muted);
+    font-size: 12px;
+}
+
+/* GRID */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+}
+
+.full {
+    grid-column: 1 / -1;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    font-size: 13px;
+    font-weight: 600;
+    color: #344054;
+    margin-bottom: 7px;
+}
+
+.required {
+    color: var(--danger);
+}
+
+input,
+select,
+textarea {
+    width: 100%;
+    padding: 12px 13px;
+    border: 1px solid var(--border);
+    border-radius: 9px;
+    background: white;
+    color: var(--text);
+    font: inherit;
+    font-size: 14px;
+    outline: none;
+    transition: .2s;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(23,105,224,.1);
+}
+
+textarea {
+    resize: vertical;
+    min-height: 90px;
+}
+
+.invalid {
+    border-color: var(--danger) !important;
+    background: #fffafa;
+}
+
+.error {
+    color: var(--danger);
+    font-size: 11px;
+    min-height: 17px;
+    margin-top: 4px;
+}
+
+input[type="file"] {
+    padding: 9px;
+    cursor: pointer;
+}
+
+.file-note {
+    color: var(--muted);
+    font-size: 11px;
+    margin-top: 4px;
+}
+
+/* DOCUMENTS */
+.documents {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+}
+
+.document-box {
+    border: 1px dashed #b8c5d6;
+    padding: 16px;
+    border-radius: 12px;
+    background: #fafcff;
+    transition: .2s;
+}
+
+.document-box:hover {
+    border-color: var(--primary);
+    background: #f5f9ff;
+}
+
+.document-box label {
+    display: block;
+}
+
+/* DECLARATION */
+.declaration {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    cursor: pointer;
+}
+
+.declaration input {
+    width: 18px;
+    height: 18px;
+    margin-top: 3px;
+    accent-color: var(--primary);
+}
+
+.declaration span {
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+/* SUCCESS */
+.success {
+    display: none;
+    padding: 16px 18px;
+    border-radius: 12px;
+    background: #ecfdf3;
+    border: 1px solid #abefc6;
+    color: var(--success);
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+.success.show {
+    display: block;
+}
+
+/* BUTTONS */
+.actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+    margin-top: 24px;
+}
+
+button {
+    border: none;
+    padding: 13px 22px;
+    border-radius: 9px;
+    font: inherit;
+    font-weight: 700;
+    cursor: pointer;
+    transition: .2s;
+}
+
+.submit {
+    background: var(--primary);
+    color: white;
+    box-shadow: 0 5px 12px rgba(23,105,224,.2);
+}
+
+.submit:hover {
+    background: var(--primary-dark);
+    transform: translateY(-1px);
+}
+
+.reset {
+    background: white;
+    color: #344054;
+    border: 1px solid #d0d5dd;
+}
+
+.reset:hover {
+    background: #f2f4f7;
+}
+
+/* FOOTER */
+footer {
+    background: #0c2340;
+    color: white;
+    padding: 30px 20px 15px;
+}
+
+.footer-inner {
+    max-width: 1100px;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    gap: 30px;
+}
+
+.footer-inner h3 {
+    margin-bottom: 6px;
+}
+
+.footer-inner p {
+    color: #c5d1df;
+    font-size: 13px;
+    margin: 4px 0;
+}
+
+.copyright {
+    max-width: 1100px;
+    margin: 20px auto 0;
+    padding-top: 15px;
+    border-top: 1px solid rgba(255,255,255,.15);
+    text-align: center;
+    color: #9cafc4;
+    font-size: 12px;
+}
+
+/* MOBILE */
+@media (max-width: 700px) {
+
+    .header-inner {
+        align-items: flex-start;
+    }
+
+    .logo {
+        width: 58px;
+        height: 58px;
+        font-size: 27px;
+    }
+
+    .header-text h1 {
+        font-size: 21px;
+    }
+
+    .container {
+        width: calc(100% - 20px);
+        padding-top: 25px;
+    }
+
+    .page-title h2 {
+        font-size: 25px;
+    }
+
+    .card {
+        padding: 20px 16px;
+        border-radius: 14px;
+    }
+
+    .grid,
+    .documents {
+        grid-template-columns: 1fr;
+    }
+
+    .full {
+        grid-column: auto;
+    }
+
+    .actions {
+        flex-direction: column-reverse;
+    }
+
+    .actions button {
+        width: 100%;
+    }
+
+    .footer-inner {
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 420px) {
+
+    .college-header {
+        padding: 18px 12px;
+    }
+
+    .logo {
+        width: 50px;
+        height: 50px;
+        font-size: 23px;
+    }
+
+    .header-text h1 {
+        font-size: 18px;
+    }
+
+    .header-text p {
+        font-size: 12px;
+    }
+
+    .session {
+        font-size: 11px;
+    }
+
+    .section-heading h3 {
+        font-size: 17px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- HEADER -->
+<header>
+    <div class="header-inner">
+
+        <div class="logo" aria-label="College Logo Placeholder">
+            🎓
+        </div>
+
+        <div class="header-text">
+            <h1>College Name</h1>
+            <p>Student Admission Portal</p>
+            <span class="session">
+                Academic Session: <strong>2026–27</strong>
+            </span>
+        </div>
+
+    </div>
+</header>
+
+
+<main class="container">
+
+    <div class="page-title">
+        <h2>JECRC University Admission Form</h2>
+        <p>Please enter your information carefully and accurately.</p>
+    </div>
+
+
+    <!-- PROGRESS -->
+    <div class="progress-card">
+        <div class="progress-info">
+            <span>Application Progress</span>
+            <span id="progressText">0%</span>
+        </div>
+
+        <div class="progress-track">
+            <div class="progress-bar" id="progressBar"></div>
+        </div>
+    </div>
+
+
+    <form id="admissionForm" novalidate>
+
+        <!-- PERSONAL INFORMATION -->
+        <section class="card">
+
+            <div class="section-heading">
+                <div class="icon">👤</div>
+                <div>
+                    <h3>Personal Information</h3>
+                    <p>Student's basic personal details</p>
+                </div>
+            </div>
+
+            <div class="grid">
+
+                <div class="form-group full">
+                    <label for="studentName">
+                        Student Full Name <span class="required">*</span>
+                    </label>
+
+                    <input
+                        type="text"
+                        id="studentName"
+                        placeholder="Enter full name"
+                        required
+                    >
+
+                    <small class="error"></small>
+                </div>
+
+
+                <div class="form-group">
+                    <label for="dob">
+                        Date of Birth <span class="required">*</span>
+                    </label>
+
+                    <input type="date" id="dob" required>
+
+                    <small class="error"></small>
+                </div>
+
+
+                <div class="form-group">
+                    <label for="gender">
+                        Gender <span class="required">*</span>
+                    </label>
+
+                    <select id="gender" required>
+                        <option value="">Select Gender</option>
+                        <option>Male</option>
+                        <option>Female</option>
+                        <option>Other</option>
+                    </select>
+
+                    <small class="error"></small>
+                </div>
+
+
+                <div class="form-group">
+                    <label for="bloodGroup">Blood Group</label>
+
+                    <select id="bloodGroup">
+                        <option value="">Select Blood Group</option>
+                        <option>A+</option>
+                        <option>A-</option>
+                        <option>B+</option>
+                        <option>B-</option>
+                        <option>AB+</option>
+                        <option>AB-</option>
+                        <option>O+</option>
+                        <option>O-</option>
+                    </select>
+                </div>
+
+
+                <div class="form-group">
+                    <label for="mobile">
+                        Mobile Number <span class="required">*</span>
+                    </label>
+
+                    <input
+                        type="tel"
+                        id="mobile"
+                        maxlength="10"
+                        placeholder="10-digit mobile number"
+                        required
+                    >
+
+                    <small class="error"></small>
+                </div>
+
+
+                <div class="form-group">
+                    <label for="email">
+                        Email Address <span class="required">*</span>
+                    </label>
+
+                    <input
+                        type="email"
+                        id="email"
+                        placeholder="example@email.com"
+                        required
+                    >
+
+                    <small class="error"></small>
+                </div>
+
+
+                <div class="form-group">
+                    <label for="aadhaar">Aadhaar / ID Number</label>
+
+                    <input
+                        type="text"
+                        id="aadhaar"
+                        placeholder="Enter ID number"
+                    >
+                </div>
+
+
+                <div class="form-group">
+                    <label for="studentPhoto">Student Photo</label>
+
+                    <input
+                        type="file"
+                        id="studentPhoto"
+                        accept=".jpg,.jpeg,.png"
+                    >
+
+                    <small class="file-note">
+                        JPG, JPEG or PNG
+                    </small>
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- ADDRESS -->
+        <section class="card">
+
+            <div class="section-heading">
+                <div class="icon">📍</div>
+
+                <div>
+                    <h3>Address Information</h3>
+                    <p>Student's residential address</p>
+                </div>
+            </div>
+
+            <div class="grid">
+
+                <div class="form-group full">
+                    <label for="address">
+                        Full Address <span class="required">*</span>
+                    </label>
+
+                    <textarea
+                        id="address"
+                        placeholder="House number, street, area..."
+                        required
+                    ></textarea>
+
+                    <small class="error"></small>
+                </div>
+
+
+                <div class="form-group">
+                    <label for="city">
+                        City <span class="required">*</span>
+                    </label>
+
+                    <input
+                        type="text"
+                        id="city"
+                        placeholder="Enter city"
+                        required
+                    >
+
+                    <small class="error"></small>
+                </div>
+
+
+                <div class="form-group">
+                    <label for="state">
+                        State <span class="required">*</span>
+                    </label>
+
+                    <input
+                        type="text"
+                        id="state"
+                        placeholder="Enter state"
+                        required
+                    >
+
+                    <small class="error"></small>
+                </div>
+
+
+                <div class="form-group">
+                    <label for="pin">
+                        PIN Code <span class="required">*</span>
+                    </label>
+
+                    <input
+                        type="text"
+                        id="pin"
+                        maxlength="6"
+                        placeholder="6-digit PIN"
+                        required
+                    >
+
+                    <small class="error"></small>
+                </div>
+
+
+                <div class="form-group">
+                    <label for="country">
+                        Country <span class="required">*</span>
+                    </label>
+
+                    <input
+                        type="text"
+                        id="country"
+                        value="India"
+                        required
+                    >
+
+                    <small class="error"></small>
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- ACADEMIC -->
+        <section class="card">
+
+            <div class="section-heading">
+                <div class="icon">🎓</div>
+
+                <div>
+                    <h3>Academic Information</h3>
+                    <p>Previous academic details</p>
+                </div>
+            </div>
+
+            <div class="grid">
+
+                <div class="form-group">
+                    <label for="qualification">
+                        Qualification <span class="required">*</span>
+                    </label>
+
+                    <select id="qualification" required>
+                        <option value="">Select Qualification</option>
+                        <option>10th</option>
+                        <option>12th</option>
+                        <option>Diploma</option>
+                        <option>Graduation</option>
+                        <option>Post Graduation</option>
+                    </select>
+
+                    <small class="error"></small>
+                </div>
+
+
+                <div class="form-group">
+                    <label for="previousCollege">
+                        Previous School / College Name
+                        <span class="required">*</span>
+                    </label>
+
+                    <input
+                        type="text"
+                        id="previousCollege"
+                        placeholder="Institution name"
+                        required
+                    >
+
+                    <small class="error"></small>
+                </div>
+
+
+                <div class="form-group">
+                    <label for="board">
+                        Board / University <span class="required">*</span>
+                    </label>
+
+                    <input
+                        type="text"
+                        id="board"
+                        placeholder="CBSE / RBSE / University"
+                        required
+                    >
+
+                    <small class="error"></small>
+                </div>
+
+
+                <div class="form-group">
+                    <label for="passingYear">
+                        Passing Year <span class="required">*</span>
+                    </label>
+
+                    <select id="passingYear" required>
+                        <option value="">Select Year</option>
+                        <option>2022</option>
+                        <option>2023</option>
+                        <option>2024</option>
+                        <option>2025</option>
+                        <option>2026</option>
+                    </select>
+
+                    <small class="error"></small>
+                </div>
+
+
+                <div class="form-group">
+                    <label for="percentage">
+                        Percentage / CGPA <span class="required">*</span>
+                    </label>
+
+                    <input
+                        type="text"
+                        id="percentage"
+                        placeholder="Example: 82% or 8.2 CGPA"
+                        required
+                    >
+
+                    <small class="error"></small>
+                </div>
+
+
+                <div class="form-group">
+                    <label for="course">
+                        Course Applying For <span class="required">*</span>
+                    </label>
+
+                    <select id="course" required>
+                        <option value="">Select Course</option>
+                        <option>B.Tech</option>
+                        <option>BCA</option>
+                        <option>BBA</option>
+                        <option>B.Sc</option>
+                        <option>B.Com</option>
+                        <option>MCA</option>
+                        <option>MBA</option>
+                        <option>M.Tech</option>
+                    </select>
+
+                    <small class="error"></small>
+                </div>
+
+
+                <div class="form-group full">
+                    <label for="branch">
+                        Branch / Specialization <span class="required">*</span>
+                    </label>
+
+                    <input
+                        type="text"
+                        id="branch"
+                        placeholder="Example: Computer Science & Engineering"
+                        required
+                    >
+
+                    <small class="error"></small>
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- FATHER -->
+        <section class="card">
+
+            <div class="section-heading">
+                <div class="icon">👨</div>
+
+                <div>
+                    <h3>Father's Information</h3>
+                    <p>Father's contact and professional details</p>
+                </div>
+            </div>
+
+            <div class="grid">
+
+                <div class="form-group">
+                    <label for="fatherName">
+                        Father's Full Name <span class="required">*</span>
+                    </label>
+
+                    <input
+                        type="text"
+                        id="fatherName"
+                        placeholder="Full name"
+                        required
+                    >
+
+                    <small class="error"></small>
+                </div>
+
+
+                <div class="form-group">
+                    <label for="fatherOccupation">
+                        Father's Occupation
+                    </label>
+
+                    <input
+                        type="text"
+                        id="fatherOccupation"
+                        placeholder="Occupation"
+                    >
+                </div>
+
+
+                <div class="form-group">
+                    <label for="fatherMobile">
+                        Father's Mobile Number <span class="required">*</span>
+                    </label>
+
+                    <input
+                        type="tel"
+                        id="fatherMobile"
+                        maxlength="10"
+                        placeholder="10-digit number"
+                        required
+                    >
+
+                    <small class="error"></small>
+                </div>
+
+
+                <div class="form-group">
+                    <label for="fatherEmail">
+                        Father's Email Address
+                    </label>
+
+                    <input
+                        type="email"
+                        id="fatherEmail"
+                        placeholder="Email address"
+                    >
+                </div>
+
+
+                <div class="form-group">
+                    <label for="income">Annual Family Income</label>
+
+                    <select id="income">
+                        <option value="">Select Income</option>
+                        <option>Below ₹2 Lakh</option>
+                        <option>₹2–5 Lakh</option>
+                        <option>₹5–10 Lakh</option>
+                        <option>₹10–20 Lakh</option>
+                        <option>Above ₹20 Lakh</option>
+                    </select>
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- MOTHER -->
+        <section class="card">
+
+            <div class="section-heading">
+                <div class="icon">👩</div>
+
+                <div>
+                    <h3>Mother's Information</h3>
+                    <p>Mother's details</p>
+                </div>
+            </div>
+
+            <div class="grid">
+
+                <div class="form-group">
+                    <label for="motherName">
+                        Mother's Full Name <span class="required">*</span>
+                    </label>
+
+                    <input
+                        type="text"
+                        id="motherName"
+                        placeholder="Full name"
+                        required
+                    >
+
+                    <small class="error"></small>
+                </div>
+
+
+                <div class="form-group">
+                    <label for="motherOccupation">
+                        Mother's Occupation
+                    </label>
+
+                    <input
+                        type="text"
+                        id="motherOccupation"
+                        placeholder="Occupation"
+                    >
+                </div>
+
+
+                <div class="form-group">
+                    <label for="motherMobile">
+                        Mother's Mobile Number
+                    </label>
+
+                    <input
+                        type="tel"
+                        id="motherMobile"
+                        maxlength="10"
+                        placeholder="10-digit number"
+                    >
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- GUARDIAN -->
+        <section class="card">
+
+            <div class="section-heading">
+                <div class="icon">🛡️</div>
+
+                <div>
+                    <h3>Guardian Information</h3>
+                    <p>Guardian details if applicable</p>
+                </div>
+            </div>
+
+            <div class="grid">
+
+                <div class="form-group">
+                    <label for="guardianName">Guardian Name</label>
+
+                    <input
+                        type="text"
+                        id="guardianName"
+                        placeholder="Guardian full name"
+                    >
+                </div>
+
+
+                <div class="form-group">
+                    <label for="relationship">
+                        Relationship with Student
+                    </label>
+
+                    <input
+                        type="text"
+                        id="relationship"
+                        placeholder="Example: Uncle"
+                    >
+                </div>
+
+
+                <div class="form-group">
+                    <label for="guardianContact">
+                        Guardian Contact Number
+                    </label>
+
+                    <input
+                        type="tel"
+                        id="guardianContact"
+                        maxlength="10"
+                        placeholder="10-digit number"
+                    >
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- ADDITIONAL -->
+        <section class="card">
+
+            <div class="section-heading">
+                <div class="icon">ℹ️</div>
+
+                <div>
+                    <h3>Additional Information</h3>
+                    <p>Additional student details</p>
+                </div>
+            </div>
+
+            <div class="grid">
+
+                <div class="form-group">
+                    <label for="nationality">
+                        Nationality <span class="required">*</span>
+                    </label>
+
+                    <input
+                        type="text"
+                        id="nationality"
+                        value="Indian"
+                        required
+                    >
+
+                    <small class="error"></small>
+                </div>
+
+
+                <div class="form-group">
+                    <label for="category">
+                        Category <span class="required">*</span>
+                    </label>
+
+                    <select id="category" required>
+                        <option value="">Select Category</option>
+                        <option>General</option>
+                        <option>OBC</option>
+                        <option>SC</option>
+                        <option>ST</option>
+                        <option>EWS</option>
+                    </select>
+
+                    <small class="error"></small>
+                </div>
+
+
+                <div class="form-group">
+                    <label for="religion">Religion</label>
+
+                    <input
+                        type="text"
+                        id="religion"
+                        placeholder="Religion"
+                    >
+                </div>
+
+
+                <div class="form-group">
+                    <label for="emergencyName">
+                        Emergency Contact Name
+                        <span class="required">*</span>
+                    </label>
+
+                    <input
+                        type="text"
+                        id="emergencyName"
+                        placeholder="Full name"
+                        required
+                    >
+
+                    <small class="error"></small>
+                </div>
+
+
+                <div class="form-group">
+                    <label for="emergencyNumber">
+                        Emergency Contact Number
+                        <span class="required">*</span>
+                    </label>
+
+                    <input
+                        type="tel"
+                        id="emergencyNumber"
+                        maxlength="10"
+                        placeholder="10-digit number"
+                        required
+                    >
+
+                    <small class="error"></small>
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- DOCUMENTS -->
+        <section class="card">
+
+            <div class="section-heading">
+                <div class="icon">📄</div>
+
+                <div>
+                    <h3>Document Upload</h3>
+                    <p>Upload your admission documents</p>
+                </div>
+            </div>
+
+            <div class="documents">
+
+                <div class="document-box">
+                    <label for="marksheet10">10th Marksheet</label>
+
+                    <input
+                        type="file"
+                        id="marksheet10"
+                        accept=".pdf,.jpg,.jpeg,.png"
+                    >
+
+                    <small class="file-note">
+                        PDF, JPG, JPEG, PNG
+                    </small>
+                </div>
+
+
+                <div class="document-box">
+                    <label for="marksheet12">12th Marksheet</label>
+
+                    <input
+                        type="file"
+                        id="marksheet12"
+                        accept=".pdf,.jpg,.jpeg,.png"
+                    >
+
+                    <small class="file-note">
+                        PDF, JPG, JPEG, PNG
+                    </small>
+                </div>
+
+
+                <div class="document-box">
+                    <label for="transfer">
+                        Transfer Certificate
+                    </label>
+
+                    <input
+                        type="file"
+                        id="transfer"
+                        accept=".pdf,.jpg,.jpeg,.png"
+                    >
+
+                    <small class="file-note">
+                        PDF, JPG, JPEG, PNG
+                    </small>
+                </div>
+
+
+                <div class="document-box">
+                    <label for="migration">
+                        Migration Certificate
+                    </label>
+
+                    <input
+                        type="file"
+                        id="migration"
+                        accept=".pdf,.jpg,.jpeg,.png"
+                    >
+
+                    <small class="file-note">
+                        PDF, JPG, JPEG, PNG
+                    </small>
+                </div>
+
+
+                <div class="document-box">
+                    <label for="idProof">
+                        Aadhaar / ID Proof
+                    </label>
+
+                    <input
+                        type="file"
+                        id="idProof"
+                        accept=".pdf,.jpg,.jpeg,.png"
+                    >
+
+                    <small class="file-note">
+                        PDF, JPG, JPEG, PNG
+                    </small>
+                </div>
+
+
+                <div class="document-box">
+                    <label for="passportPhoto">
+                        Passport Size Photograph
+                    </label>
+
+                    <input
+                        type="file"
+                        id="passportPhoto"
+                        accept=".jpg,.jpeg,.png"
+                    >
+
+                    <small class="file-note">
+                        JPG, JPEG, PNG
+                    </small>
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- DECLARATION -->
+        <section class="card">
+
+            <div class="section-heading">
+                <div class="icon">✍️</div>
+
+                <div>
+                    <h3>Declaration</h3>
+                    <p>Confirm the information provided</p>
+                </div>
+            </div>
+
+            <label class="declaration">
+
+                <input
+                    type="checkbox"
+                    id="declaration"
+                    required
+                >
+
+                <span>
+                    I hereby declare that all the information provided
+                    by me is true and correct.
+                </span>
+
+            </label>
+
+            <small class="error" id="declarationError"></small>
+
+        </section>
+
+
+        <!-- SUCCESS MESSAGE -->
+        <div class="success" id="successMessage">
+            ✓ Admission application submitted successfully!
+        </div>
+
+
+        <!-- ACTION BUTTONS -->
+        <div class="actions">
+
+            <button
+                type="reset"
+                class="reset"
+                id="resetButton"
+            >
+                ↻ Reset Form
+            </button>
+
+            <button
+                type="submit"
+                class="submit"
+            >
+                Submit Application →
+            </button>
+
+        </div>
+
+    </form>
+
+</main>
+
+
+<!-- FOOTER -->
+<footer>
+
+    <div class="footer-inner">
+
+        <div>
+            <h3>College Name</h3>
+            <p>Student Admission Portal</p>
+        </div>
+
+        <div>
+            <p>📍 College Road, Jaipur, Rajasthan</p>
+            <p>📞 +91 98765 43210</p>
+            <p>✉️ admissions@college.edu</p>
+        </div>
+
+    </div>
+
+    <div class="copyright">
+        © 2026 College Name. All Rights Reserved.
+    </div>
+
+</footer>
+
+
+<script>
+/* ==========================================
+   COLLEGE ADMISSION FORM JAVASCRIPT
+========================================== */
+
+const form = document.getElementById("admissionForm");
+const successMessage = document.getElementById("successMessage");
+const progressBar = document.getElementById("progressBar");
+const progressText = document.getElementById("progressText");
+
+const requiredFields = Array.from(
+    form.querySelectorAll("[required]")
+);
+
+
+/* ------------------------------------------
+   ERROR HANDLING
+------------------------------------------ */
+
+function showError(field, message) {
+
+    field.classList.add("invalid");
+
+    const group = field.closest(".form-group");
+
+    if (group) {
+        const error = group.querySelector(".error");
+
+        if (error) {
+            error.textContent = message;
+        }
+    }
+
+    if (field.id === "declaration") {
+        document.getElementById("declarationError").textContent = message;
+    }
+}
+
+
+function clearError(field) {
+
+    field.classList.remove("invalid");
+
+    const group = field.closest(".form-group");
+
+    if (group) {
+        const error = group.querySelector(".error");
+
+        if (error) {
+            error.textContent = "";
+        }
+    }
+
+    if (field.id === "declaration") {
+        document.getElementById("declarationError").textContent = "";
+    }
+}
+
+
+/* ------------------------------------------
+   VALIDATION
+------------------------------------------ */
+
+function validateField(field) {
+
+    const value = field.value.trim();
+
+    clearError(field);
+
+    if (field.type === "checkbox") {
+
+        if (!field.checked) {
+            showError(
+                field,
+                "You must accept the declaration."
+            );
+
+            return false;
+        }
+
+        return true;
+    }
+
+
+    if (value === "") {
+
+        showError(
+            field,
+            "This field is required."
+        );
+
+        return false;
+    }
+
+
+    if (
+        field.type === "email" &&
+        value !== ""
+    ) {
+
+        const emailPattern =
+            /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+        if (!emailPattern.test(value)) {
+
+            showError(
+                field,
+                "Please enter a valid email address."
+            );
+
+            return false;
+        }
+    }
+
+
+    if (field.type === "tel") {
+
+        if (!/^[0-9]{10}$/.test(value)) {
+
+            showError(
+                field,
+                "Please enter a valid 10-digit mobile number."
+            );
+
+            return false;
+        }
+    }
+
+
+    if (field.id === "pin") {
+
+        if (!/^[0-9]{6}$/.test(value)) {
+
+            showError(
+                field,
+                "PIN code must contain 6 digits."
+            );
+
+            return false;
+        }
+    }
+
+
+    return true;
+}
+
+
+/* ------------------------------------------
+   VALIDATE COMPLETE FORM
+------------------------------------------ */
+
+function validateForm() {
+
+    let isValid = true;
+    let firstInvalid = null;
+
+    requiredFields.forEach(field => {
+
+        if (!validateField(field)) {
+
+            isValid = false;
+
+            if (!firstInvalid) {
+                firstInvalid = field;
+            }
+        }
+
+    });
+
+
+    if (firstInvalid) {
+
+        firstInvalid.scrollIntoView({
+            behavior: "smooth",
+            block: "center"
+        });
+
+        firstInvalid.focus();
+    }
+
+
+    return isValid;
+}
+
+
+/* ------------------------------------------
+   FORM SUBMIT
+------------------------------------------ */
+
+form.addEventListener("submit", function(event) {
+
+    event.preventDefault();
+
+    successMessage.classList.remove("show");
+
+    const valid = validateForm();
+
+    if (!valid) {
+        updateProgress();
+        return;
+    }
+
+
+    successMessage.classList.add("show");
+
+    successMessage.scrollIntoView({
+        behavior: "smooth",
+        block: "center"
+    });
+
+    updateProgress();
+
+});
+
+
+/* ------------------------------------------
+   RESET FORM
+------------------------------------------ */
+
+form.addEventListener("reset", function() {
+
+    setTimeout(function() {
+
+        requiredFields.forEach(field => {
+            clearError(field);
+        });
+
+        document
+            .getElementById("declarationError")
+            .textContent = "";
+
+        successMessage.classList.remove("show");
+
+        updateProgress();
+
+    }, 10);
+
+});
+
+
+/* ------------------------------------------
+   LIVE VALIDATION
+------------------------------------------ */
+
+requiredFields.forEach(field => {
+
+    field.addEventListener("input", function() {
+
+        if (field.value.trim() !== "") {
+            clearError(field);
+        }
+
+        updateProgress();
+
+    });
+
+
+    field.addEventListener("change", function() {
+
+        if (
+            field.type === "checkbox" &&
+            field.checked
+        ) {
+            clearError(field);
+        }
+
+        else if (field.value.trim() !== "") {
+            clearError(field);
+        }
+
+        updateProgress();
+
+    });
+
+});
+
+
+/* ------------------------------------------
+   MOBILE NUMBER INPUT
+------------------------------------------ */
+
+const phoneFields = document.querySelectorAll(
+    'input[type="tel"]'
+);
+
+phoneFields.forEach(field => {
+
+    field.addEventListener("input", function() {
+
+        this.value = this.value
+            .replace(/\D/g, "")
+            .slice(0, 10);
+
+    });
+
+});
+
+
+/* ------------------------------------------
+   PIN CODE INPUT
+------------------------------------------ */
+
+const pinField = document.getElementById("pin");
+
+pinField.addEventListener("input", function() {
+
+    this.value = this.value
+        .replace(/\D/g, "")
+        .slice(0, 6);
+
+});
+
+
+/* ------------------------------------------
+   FILE VALIDATION
+------------------------------------------ */
+
+const fileInputs = document.querySelectorAll(
+    'input[type="file"]'
+);
+
+const allowedExtensions = [
+    "pdf",
+    "jpg",
+    "jpeg",
+    "png"
+];
+
+fileInputs.forEach(input => {
+
+    input.addEventListener("change", function() {
+
+        const file = this.files[0];
+
+        if (!file) return;
+
+        const extension =
+            file.name
+                .split(".")
+                .pop()
+                .toLowerCase();
+
+        if (!allowedExtensions.includes(extension)) {
+
+            alert(
+                "Invalid file format. Please upload PDF, JPG, JPEG or PNG."
+            );
+
+            this.value = "";
+        }
+
+    });
+
+});
+
+
+/* ------------------------------------------
+   PROGRESS INDICATOR
+------------------------------------------ */
+
+function updateProgress() {
+
+    let completed = 0;
+
+    requiredFields.forEach(field => {
+
+        if (field.type === "checkbox") {
+
+            if (field.checked) {
+                completed++;
+            }
+
+        } else if (field.value.trim() !== "") {
+
+            completed++;
+        }
+
+    });
+
+
+    const total = requiredFields.length;
+
+    const percentage =
+        total === 0
+            ? 0
+            : Math.round((completed / total) * 100);
+
+
+    progressBar.style.width = percentage + "%";
+    progressText.textContent = percentage + "%";
+}
+
+
+/* Initial progress */
+updateProgress();
+
+</script>
+
+</body>
+</html>
