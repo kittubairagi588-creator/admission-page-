@@ -1335,6 +1335,9 @@ footer {
         <!-- SUCCESS MESSAGE -->
         <div class="success" id="successMessage">
             ✓ Admission application submitted successfully!
+            <button type="button" class="reset edit-button" id="editButton">
+                Edit Application
+            </button>
         </div>
 
 
@@ -1395,6 +1398,7 @@ footer {
 
 const form = document.getElementById("admissionForm");
 const successMessage = document.getElementById("successMessage");
+const editButton = document.getElementById("editButton");
 const progressBar = document.getElementById("progressBar");
 const progressText = document.getElementById("progressText");
 
@@ -1599,6 +1603,24 @@ form.addEventListener("submit", function(event) {
     });
 
     updateProgress();
+
+});
+
+
+/* ------------------------------------------
+   EDIT SUBMITTED APPLICATION
+------------------------------------------ */
+
+editButton.addEventListener("click", function() {
+
+    successMessage.classList.remove("show");
+
+    requiredFields[0].scrollIntoView({
+        behavior: "smooth",
+        block: "center"
+    });
+
+    requiredFields[0].focus();
 
 });
 
